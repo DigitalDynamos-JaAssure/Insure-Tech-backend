@@ -18,7 +18,7 @@ const carPolicySchema = new Schema(
           "garagingAddress": String
         },
         "user":{type:mongoose.Schema.Types.ObjectId, ref:'User'},
-        "coverage": {type:String, enum:["Crash","","uninsuredMotorist","personalInjuryProtection"]},
+        "coverage": {type:[String], enum:["Crash","Dent","Headlight","Windshield","Scratches","Oil Change"]},
         "premium": {
           "amount": Number,
           "dueDate": Date,
