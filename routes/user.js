@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const User = require('../models/User');
+const User = require('../models/User.model');
 
 router.route('/signup').post(async (req,res)=>{
     const {name,email,phone}=req.body;
-    const User = new User({
+    const user = new User({
         name,
         email,
         phone
     }); 
-    await User.save().then((res)=>{
-        res.status(200).json({message:"user added",user:User,user_id:User._id})
+    await user.save().then((response)=>{
+        res.status(200).json({message:"user added",user:user,user_id:user._id})
     })
 });
 
@@ -25,3 +25,5 @@ router.route('/login').post(async (req,res)=>{
     })
 })
 
+
+module.exports=router

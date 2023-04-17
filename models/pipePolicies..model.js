@@ -20,7 +20,6 @@ const pipePolicySchema = new Schema(
         "coverage": {type:[String],enum:['Windshield','Dent','HeadLights','Tires','Crash','body']},
         "premium": {
           "amount": Number,
-          "dueDate": Date,
           "paymentStatus": String
         }
     }

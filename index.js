@@ -18,6 +18,12 @@ mongoose.connection.once('open', () => {
 })
 // const ferry = require('./Routes/Ferry')
 // const bookings = require('./Routes/Booking')
+const user = require('./routes/user')
+const policy = require('./routes/policy')
+
+
+app.use('/user', user)
+app.use('/policy', policy)
 
 
 // app.use('/add', ferry)

@@ -11,7 +11,7 @@ const userSchema = new Schema({
             "loss_amount":{type:Number},
             "loss_cause":{type:String},
       }],
-      "policies":[{type:mongoose.Schema.Type.ObjectId, ref:'Policy'}]
+      "policies":[{type:mongoose.Schema.Types.ObjectId, ref:'Policy'}]
       },
       "name": {type:String, required:true},
       "email": {type:String, required:true},
