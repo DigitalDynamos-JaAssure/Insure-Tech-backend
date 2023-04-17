@@ -19,11 +19,18 @@ const PolicySchema = new Schema(
           "chesis_no":String,
           "coverage": {type:[String], enum:["Crash","Dent","Headlight","Windshield","Scratches","Tyre","Oil Change"]},
         },
+        
         "pipeDetails":{
 
         },
         "user":{type:mongoose.Schema.Types.ObjectId, ref:'User'},        
         "status":{type:String, enum:["Pending","Approved","Rejected","Booked"],default:"Booked"},
+        "agentDetailes":{
+        "name": String,
+        "phone": String,
+        "email": String,
+        "visitTime": String,
+        },
         "premium": {
           "amount": Number,
           "dueDate": Date,
