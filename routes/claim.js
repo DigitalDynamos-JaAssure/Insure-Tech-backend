@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const { createCanvas, loadImage } = require('canvas');
-const axios = require("axios");
-const fs = require("fs");
 const Policy = require('../models/Policies.model');
 const User = require('../models/User.model');
 const Claim = require('../models/claim.model');
@@ -14,13 +11,6 @@ router.route('/getClaimsReq').get((req, res) => {
        res.json(err);
    })
 })
-
-
-
-const image = fs.readFileSync("./patches_9.jpg", {
-    encoding: "base64"
-});
-
 
 
 router.route('/claimAdd/:id/:policyId').post((req, res) => {
