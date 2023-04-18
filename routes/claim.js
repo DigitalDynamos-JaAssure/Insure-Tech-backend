@@ -73,6 +73,9 @@ router.route('/getAcceptedClaim/:id').get((req,res)=>{
         if(claim.status=='approved'){
             res.status(200).json(claim.agent)
         }
+        else{
+            res.json({message:'No accepted claim'})
+        }
         
     }).catch(err=>{
         
