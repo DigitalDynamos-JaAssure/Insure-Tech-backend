@@ -34,12 +34,16 @@ router.route('/claimAdd/:id/:policyId').post((req, res) => {
        
     });
     newClaim.save()
-        .then((result) => {
-           const user=User.findById(id);            
-            user.claims.push(result._id);
-            user.save().then(()=>{
-                res.json({message:'Claim added!',claimId:newlaim._id})})
-            })
+        .then(async (result) => {
+           await User.findById(id).then((user)=>{
+            console.log(user)
+               let claimId=[];
+               claimId.push(result._id);            
+                user.insuranceHistory.claimIds=claimId;
+                user.save().then(()=>{
+                    res.json({message:'Claim added!',claimId:newClaim._id})})
+                })
+           })
         .catch(err => res.status(400).json('Error: ' + err));
 })
 
