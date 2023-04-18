@@ -14,7 +14,7 @@ router.route('/getClaimsReq').get((req, res) => {
    })
 })
 router.route('/getClaimsAproved').get((req, res) => {
-   Claim.find({status:"accepted"})
+   Claim.find({status:"approved"})
    .then(claims=>{
        res.json(claims);
    })
