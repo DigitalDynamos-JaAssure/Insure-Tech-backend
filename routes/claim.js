@@ -2,8 +2,19 @@ const router = require('express').Router();
 const Policy = require('../models/Policies.model');
 const User = require('../models/User.model');
 const Claim = require('../models/claim.model');
+
+
 router.route('/getClaimsReq').get((req, res) => {
    Claim.find({status:"Pending"})
+   .then(claims=>{
+       res.json(claims);
+   })
+   .catch(err=>{
+       res.json(err);
+   })
+})
+router.route('/getClaimsAproved').get((req, res) => {
+   Claim.find({status:"Accepted"})
    .then(claims=>{
        res.json(claims);
    })
