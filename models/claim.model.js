@@ -15,7 +15,7 @@ const ClaimSchema = new Schema(
           "img":{type:String}
         },
         "claimDate": {type:Date,default:Date.now()},
-        "status": {type:String,enum:["pending","approved","rejected"],default:"pending"},
+        "status": {type:String,default:"pending"},
         "agent":{
             "name":{type:String},
             "email":{type:String},
