@@ -5,7 +5,7 @@ const Claim = require('../models/claim.model');
 
 
 router.route('/getClaimsReq').get((req, res) => {
-   Claim.find({status:"Pending"})
+   Claim.find({status:"pending"})
    .then(claims=>{
        res.json(claims);
    })
@@ -14,7 +14,7 @@ router.route('/getClaimsReq').get((req, res) => {
    })
 })
 router.route('/getClaimsAproved').get((req, res) => {
-   Claim.find({status:"Accepted"})
+   Claim.find({status:"accepted"})
    .then(claims=>{
        res.json(claims);
    })
@@ -50,7 +50,8 @@ router.route('/claimAdd/:id/:policyId').post((req, res) => {
 router.route('/acceptClaim/:id').post((req,res)=>{
     const {id}=req.params;
     Claim.findById(id).then(claim=>{
-        claim.status='accepted';
+        claim.status='approved';
+        claim.agent=req.body.agent;
         claim.save().then(()=>{
             res.json('Claim accepted!')
         })
@@ -68,9 +69,16 @@ router.route('/rejectClaim/:id').post((req,res)=>{
 })
 router.route('/getAcceptedClaim/:id').get((req,res)=>{
     const {id}=req.params;
-    Claim.find({_id:id,status:'accepted'}).then(claim=>{
-        res.status(200).json(claim.agent)
+    Claim.findById(id).then(claim=>{
+        if(claim.status=='approved'){
+            res.status(200).json(claim.agent)
+        }
+        
+    }).catch(err=>{
+        
+        res.status(400).json(err)
     })
+    
 })
 
     
