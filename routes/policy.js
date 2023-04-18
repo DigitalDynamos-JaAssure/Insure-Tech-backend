@@ -31,7 +31,7 @@ router.route('/newPolicy/:id').post(async(req,res)=>{
         carDetails,coverage,premium,policyType,policyNumber,user:req.params.id
     });
     newPolicy.save().then((result)=>{
-        user.insuranceHistory.claimIds.push(result._id);
+        user.policies.push(result._id);
         user.save();        
         res.status(200).json({message:"Policy created successfully",result:result});
     }).catch((err)=>{

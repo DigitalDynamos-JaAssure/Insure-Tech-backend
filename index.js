@@ -20,10 +20,12 @@ mongoose.connection.once('open', () => {
 // const bookings = require('./Routes/Booking')
 const user = require('./routes/user')
 const policy = require('./routes/policy')
+const claim = require('./routes/claim')
 
 
 app.use('/user', user)
 app.use('/policy', policy)
+app.use('/claim', claim)
 
 
 // app.use('/add', ferry)
