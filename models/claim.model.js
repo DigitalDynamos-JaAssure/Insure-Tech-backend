@@ -12,7 +12,7 @@ const ClaimSchema = new Schema(
             "headlights%":{type:Number,default:0},
             "scratches%":{type:Number,default:0},
         },
-          "img":{type:[String]}
+          "img":{type:String}
         },
         "claimDate": {type:Date,default:Date.now()},
         "status": {type:String,enum:["pending","approved","rejected"],default:"pending"},
